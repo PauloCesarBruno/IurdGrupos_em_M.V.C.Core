@@ -25,7 +25,9 @@ namespace IurdGrupos.Models
 
             // Consulta Para Listar a Relação -> INNER JOIN
 
-            DataTable dt = objDAL.ExecutarConsulta(CommandType.Text, "Select tbl_GrupoUsuario.id, IdGrupo, GrupoNome, IdUsuario, Nome, Email From tbl_GrupoUsuario Inner Join tbl_Grupos on tbl_Grupos.Id = tbl_GrupoUsuario.IdGrupo Inner Join tbl_Usuarios on IdUsuario = tbl_Usuarios.Id Order By tbl_GrupoUsuario.IdGrupo");
+            DataTable dt = objDAL.ExecutarConsulta(CommandType.Text, "Select tbl_GrupoUsuario.id, IdGrupo, GrupoNome, IdUsuario, Nome, Email " +
+                "From tbl_GrupoUsuario Inner Join tbl_Grupos on tbl_Grupos.Id = tbl_GrupoUsuario.IdGrupo " +
+                "Inner Join tbl_Usuarios on IdUsuario = tbl_Usuarios.Id Order By tbl_GrupoUsuario.IdGrupo");
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -53,7 +55,9 @@ namespace IurdGrupos.Models
 
             // Consulta Para Listar a Relação -> INNER JOIN
 
-            DataTable dt = objDAL.ExecutarConsulta(CommandType.Text, $"Select tbl_GrupoUsuario.id, IdGrupo, GrupoNome, IdUsuario, Nome, Email From tbl_GrupoUsuario Inner Join tbl_Grupos on tbl_Grupos.Id = tbl_GrupoUsuario.IdGrupo Inner Join tbl_Usuarios on IdUsuario = tbl_Usuarios.Id Where GrupoNome = '{grupoNome}' Order By tbl_GrupoUsuario.IdGrupo");
+            DataTable dt = objDAL.ExecutarConsulta(CommandType.Text, $"Select tbl_GrupoUsuario.id, IdGrupo, GrupoNome, IdUsuario, Nome, Email" +
+                $"From tbl_GrupoUsuario Inner Join tbl_Grupos on tbl_Grupos.Id = tbl_GrupoUsuario.IdGrupo " +
+                $"Inner Join tbl_Usuarios on IdUsuario = tbl_Usuarios.Id Where GrupoNome = '{grupoNome}' Order By tbl_GrupoUsuario.IdGrupo");
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
