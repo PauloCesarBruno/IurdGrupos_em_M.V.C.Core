@@ -79,6 +79,7 @@ namespace IurdGrupos.Controllers
             }
         }
 
+        // Carrega os dados Instanciados ...
         private void CarregarDados()
         {
             ViewBag.ListaGrupos = new GrupoMembroModel().RetornarListaGrupo();
