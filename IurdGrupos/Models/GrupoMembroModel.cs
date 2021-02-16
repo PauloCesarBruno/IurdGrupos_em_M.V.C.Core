@@ -121,13 +121,13 @@ namespace IurdGrupos.Models
             }
         }
 
-        // Para não ter que codificar aqi onde já esta codificado apenas Istancio...
+        // Para não ter que codificar aqi onde já esta codificado apenas Istancio.
         public List<ModelGrupo> RetornarListaGrupo()
         {
             return new ModelGrupo().ListarTodosGrupos();
         }
 
-        // Para não ter que codificar aqi onde já esta codificado apenas Istancio...
+        // Para não ter que codificar aqi onde já esta codificado apenas Istancio.
         public List<ModelMembro> RetornarListaMembro()
         {
             return new ModelMembro().ListarTodosMembros();
