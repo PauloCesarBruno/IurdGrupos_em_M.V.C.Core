@@ -1,0 +1,79 @@
+﻿@model GrupoMembroModel
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="icon" href="~/img/Grupo.ico" />
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Registrar</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <br />
+                <form asp-controller="GrupoMembro" asp-action="Registrar">
+                    @*<input type="hidden" asp-for="GruposId" class="form-control" value="@try {@ViewBag.Lista.GruposId} catch { }" />*@
+
+                    <div class="form-group">
+                        <h5>Grupos</h5>
+                        <select asp-for="IdGrupo" class="form-control">
+                            @{
+                                try
+                                {
+                                    foreach (var item in (List<ModelGrupo>)ViewBag.ListaGrupos)
+                                    {
+                                        <option value="@item.Id">@item.GrupoNome</option>
+                                    }
+
+                                }
+                                catch (Exception)
+                                {
+                                    //
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>Membros</h5>
+                        <select asp-for="IdUsuario" class="form-control">
+                            @{
+                                try
+                                {
+                                    foreach (var item in (List<ModelMembro>)ViewBag.ListaMembros)
+                                    {
+                                        <option value="@item.Id">@item.Nome | @item.Email</option>
+                                    }
+
+                                }
+                                catch (Exception)
+                                {
+                                    //
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <br />
+                    <hr />
+
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Registrar</button>
+                    <button style="margin-left: 3px;" type="button" class="btn btn-dark btn-sm" onclick="Voltar()"><i class="fa fa-times"></i> Desistir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function Voltar() {
+        window.location.href = '../GrupoMembro/Index';
+    }
+
+</script>

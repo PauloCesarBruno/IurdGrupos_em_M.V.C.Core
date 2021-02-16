@@ -1,0 +1,96 @@
+﻿@model GrupoMembroModel
+
+<div class="container">
+    <h3>Filtro por Nome do Grupo</h3>
+    <hr />
+    <form asp-controller="GrupoMembro" asp-action="Filtro">
+        <div class="form-row">
+            <div class="col col-4">
+                <input asp-for="GrupoNome" type="text" class="form-control" placeholder="Digite o Nome do Grupo" />
+            </div>
+            <div class="col col-2">
+                <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i> Buscar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<br />
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <!--<th style="padding: 0px 20px 0px 20px;">Id</th>-->
+                    <th style="padding: 0px 20px 0px 20px;">Id</th>
+                    <th style="padding: 0px 20px 0px 20px;">Grupo</th>
+                    <th style="padding: 0px 20px 0px 20px;">Id</th>
+                    <th style="padding: 0px 20px 0px 20px;">Nome</th>
+                    <th style="padding: 0px 20px 0px 20px;">Email</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    @try
+                    {
+                        foreach (var item in (List<GrupoMembroModel>)ViewBag.Lista)
+                        {
+                            <tr>
+                                <!--<td style="padding: 0px 20px 0px 20px; color:red; font-family:Arial; font-style:italic;">@item.Id</td>-->
+                                <td style="padding: 0px 20px 0px 20px; color:red;">@item.IdGrupo</td>
+                                <td style="padding: 0px 20px 0px 20px;">@item.GrupoNome</td>
+                                <td style="padding: 0px 20px 0px 20px; color:red;">@item.IdUsuario</td>
+                                <td style="padding: 0px 20px 0px 20px;">@item.Nome</td>
+                                <td style="padding: 0px 20px 0px 20px; color:blue;">@item.Email</td>
+                                <td style="padding: 2px;"> | <button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+                            </tr>
+                        }
+                    }
+                    catch
+                    {
+                        //
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="modal" id="modal">
+
+        </div>
+
+        @section scripts{
+            <script>
+
+                $(function () {
+                    $(".Excluir").click(function () {
+                        var id = $(this).attr("data-id");
+                        $("#modal").load("Excluir?id=" + id, function () {
+                            $("#modal").modal();
+                        })
+                    });
+                })
+
+
+            </script>
+        }
+        <br />
+        <hr />
+
+        <button type="button" class=" btn btn-dark btn-sm" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
+
+        <div style="margin-top: 20px">
+            <hr />
+            <p>@DateTime.Now.Year - IURD - Grupos e Membros - Por Paulo Bruno &reg;</p>
+        </div>
+
+    </div>
+</div>
+
+<script>    
+
+    function Voltar() {
+        window.location.href = '../GrupoMembro/Index';
+    }
+
+</script>

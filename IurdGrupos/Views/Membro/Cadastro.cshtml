@@ -1,0 +1,42 @@
+﻿@model ModelMembro
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+            <h4 style="padding-right:400px;" class="modal-title">Membros</h4>
+        </div>
+        <div class="modal-body">
+            <form asp-controller="Membro" asp-action="Cadastro" method="post">
+                <input asp-for="Id" type="hidden" class="form-control" value="@try { @ViewBag.Membros.Id } catch { }" />
+
+                <div class="form-row">
+                    <div class="col col-12">
+                        <label>Nome</label>
+                        <input asp-for="Nome" type="text" class="form-control" required value="@try { @ViewBag.Membros.Nome } catch { }" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col col-12">
+                        <label>Email</label>
+                        <input asp-for="Email" type="email" class="form-control" required value="@try { @ViewBag.Membros.Email } catch { }" />
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="form-inline">
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Registrar</button>
+                    <button type="button" class="btn btn-info btn-sm ml-2" onclick="Voltar()"><i class="fa fa-times"></i> Desistir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Voltar() {
+        window.location.href = '../Membro/Index';
+    }
+</script>

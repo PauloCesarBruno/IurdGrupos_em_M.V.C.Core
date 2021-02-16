@@ -1,0 +1,99 @@
+﻿@model ModelGrupo
+
+<div class="container">
+    <div class="form-inline">
+        <div class=" col col-8">
+            <h3>Grupos - IURD</h3>
+        </div>
+        <button type="button" class="btn btn-outline-success" onclick="Filtro()"><i class="fa fa-filter"></i> Filtro por nome do grupo</button>
+    </div>
+    <hr />
+</div>
+
+<br />
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style="padding: 0px 20px 0px 20px;">Id</td>
+                    <td style="padding: 0px 20px 0px 20px;">Grupo</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    @foreach (var item in (List<ModelGrupo>)ViewBag.ListaGrupo)
+                    {
+                        <tr>
+                            <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
+                            <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+
+                            <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
+                            <td style="padding: 0px 20px 0px 20px; color:blue">@item.GrupoNome</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="modal" id="modal">
+
+        </div>
+
+        @section scripts{
+            <script>
+                $(function () {
+                    $(".Editar").click(function () {
+                        var id = $(this).attr("data-id");
+                        $("#modal").load("Cadastro?id=" + id, function () {
+                            $("#modal").modal();
+                        })
+                    });
+                })
+
+                $(function () {
+                    $(".Excluir").click(function () {
+                        var id = $(this).attr("data-id");
+                        $("#modal").load("Excluir?id=" + id, function () {
+                            $("#modal").modal();
+                        })
+                    });
+                })
+
+                $(".Cadastro").click(function () {
+                    $("#modal").load("Cadastro", function () {
+                        $("#modal").modal();
+                    })
+                });
+
+            </script>
+        }
+
+        <br />
+
+        <div class="form-inline">
+            <button type="button" class="btn btn-success btn-sm Cadastro"><i class="fa fa-user"></i> Novo Grupo</button>
+            <button type="button" class="btn btn-info btn-sm ml-3" onclick="Voltar()"><i class="fa fa-step-backward"></i> Voltar</button>
+        </div>
+
+        <div style="margin-top: 20px">
+            <hr />
+            <p>@DateTime.Now.Year - IURD - Grupos e Membros - Por Paulo Bruno &reg;</p>
+        </div>
+
+        <script>
+
+            function Filtro() {
+                window.location.href = '../Grupo/Filtro';
+            }
+
+            function Voltar() {
+                window.location.href = '../Home/Index';
+            }
+
+        </script>
+    </div>
+</div>
