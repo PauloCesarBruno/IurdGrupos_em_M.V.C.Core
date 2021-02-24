@@ -2,15 +2,19 @@
 
 <div class="container">
     <h3>Filtro por Nome do Grupo</h3>
-    <hr />
+    <hr /><br />
     <form asp-controller="GrupoMembro" asp-action="Filtro">
         <div class="form-row">
-            <div class="col col-4">
-                <input asp-for="GrupoNome" type="text" class="form-control" placeholder="Digite o Nome do Grupo" />
+            <div class="col col-6">
+                <input asp-for="GrupoNome" type="text" class="form-control" placeholder="Digite o Nome do Grupo que quer buscar" />
             </div>
-            <div class="col col-2">
+            <div class="col col-3">
                 <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i> Buscar</button>
             </div>
+            <div style="margin-left: -170px;" class="col col">
+                <button type="button" class=" btn btn-outline-dark" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
+            </div>
+
         </div>
     </form>
 </div>
@@ -74,10 +78,8 @@
 
             </script>
         }
-        <br />
-        <hr />
 
-        <button type="button" class=" btn btn-dark btn-sm" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
+        <br />
 
         <div style="margin-top: 20px">
             <hr />
@@ -87,7 +89,7 @@
     </div>
 </div>
 
-<script>    
+<script>
 
     function Voltar() {
         window.location.href = '../GrupoMembro/Index';

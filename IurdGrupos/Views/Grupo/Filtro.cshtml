@@ -22,10 +22,10 @@
         <table class="table-striped">
             <thead>
                 <tr>
-                    <td></td>
-                    <td></td>
                     <td style="padding: 0px 20px 0px 20px;">Id</td>
                     <td style="padding: 0px 20px 0px 20px;">Grupo</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </thead>
 
@@ -37,13 +37,13 @@
 
                         @foreach (var item in (List<ModelGrupo>)ViewBag.ListaGrupo)
                          {
-                            <tr>
-                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
-                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+                <tr>
+                    <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
+                    <td style="padding: 0px 20px 0px 20px; color:blue">@item.GrupoNome</td>
 
-                                <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
-                                <td style="padding: 0px 20px 0px 20px; color:blue">@item.GrupoNome</td>
-                            </tr>
+                    <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
+                    <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+                </tr>
                          }
                      }
                      catch

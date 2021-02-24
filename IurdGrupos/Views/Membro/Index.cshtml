@@ -1,27 +1,30 @@
 ﻿@model ModelMembro
 
+<div class="form-inline">
+    <div class=" col col-8">
+        <h3>Membros - IURD</h3>
+    </div>
+    <button type="button" class="btn btn-outline-success" onclick="Filtro()"><i class="fa fa-filter"></i> Filtro por nome do membro</button>
+</div>
+<hr />
 <div class="container">
     <div class="form-inline">
-        <div class=" col col-8">
-            <h3>Membros - IURD</h3>
-        </div>
-        <button type="button" class="btn btn-outline-success" onclick="Filtro()"><i class="fa fa-filter"></i> Filtro por nome do membro</button>
+        <button type="button" class="btn btn-outline-primary Cadastro"><i class="fa fa-user"></i> Novo Membro</button>
+        <button type="button" class="btn btn-outline-info ml-3" onclick="Voltar()"><i class="fa fa-step-backward"></i> Voltar</button>
     </div>
-    <hr />
-</div>
 
-<br />
+    <br />
 
-<div class="container">
+
     <div class="table-responsive">
         <table class="table-striped">
             <thead>
                 <tr>
-                    <td></td>
-                    <td></td>
                     <td style="padding: 0px 20px 0px 20px;">Id</td>
                     <td style="padding: 0px 20px 0px 20px;">Nome</td>
                     <td style="padding: 0px 20px 0px 20px;">Email</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </thead>
 
@@ -30,12 +33,13 @@
                     @foreach (var item in (List<ModelMembro>)ViewBag.ListaMembro)
                     {
                         <tr>
-                            <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
-                            <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
-
                             <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
                             <td style="padding: 0px 20px 0px 20px;">@item.Nome</td>
                             <td style="padding: 0px 20px 0px 20px; color:blue">@item.Email</td>
+
+                            <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
+                            <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+
                         </tr>
                     }
                 }
@@ -79,11 +83,6 @@
         }
 
         <br />
-
-        <div class="form-inline">
-            <button type="button" class="btn btn-success btn-sm Cadastro"><i class="fa fa-user"></i> Novo Membro</button>
-            <button type="button" class="btn btn-info btn-sm ml-3" onclick="Voltar()"><i class="fa fa-step-backward"></i> Voltar</button>
-        </div>
 
         <div style="margin-top: 20px">
             <hr />
