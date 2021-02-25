@@ -5,15 +5,12 @@
     <hr /><br />
     <form asp-controller="GrupoMembro" asp-action="Filtro">
         <div class="form-row">
-            <div class="col col-6">
+            <div class="col col-8">
                 <input asp-for="GrupoNome" type="text" class="form-control" placeholder="Digite o Nome do Grupo que quer buscar" />
             </div>
-            <div class="col col-3">
+            <div class="col col-4">
                 <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i> Buscar</button>
-            </div>
-            <div style="margin-left: -170px;" class="col col">
-                <button type="button" class=" btn btn-outline-dark" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
-            </div>
+            </div>            
         </div>
     </form>
 </div>
@@ -47,7 +44,7 @@
                                 <td style="padding: 0px 20px 0px 20px; color:red;">@item.IdUsuario</td>
                                 <td style="padding: 0px 20px 0px 20px;">@item.Nome</td>
                                 <td style="padding: 0px 20px 0px 20px; color:blue;">@item.Email</td>
-                                <td style="padding: 2px;"> | <button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
                             </tr>
                         }
                     }
@@ -78,7 +75,11 @@
             </script>
         }
 
-        <br />
+        <hr />
+
+        <div>
+            <button type="button" class=" btn btn-outline-dark btn-sm" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
+        </div>
 
         <div style="margin-top: 20px">
             <hr />

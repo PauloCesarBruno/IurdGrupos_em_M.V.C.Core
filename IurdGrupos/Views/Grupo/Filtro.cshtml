@@ -5,15 +5,12 @@
 
     <form asp-controller="Grupo" asp-action="Filtro">
         <div class="form-row">
-            <div class="col col-4">
+            <div class="col col-8">
                 <input asp-for="GrupoNome" type="text" class="form-control" placeholder="Digite o nome do grupo" />
             </div>
-            <div class="col col-2">
+            <div class="col col-4">
                 <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i> Buscar</button>
-            </div>
-            <div style="margin-left: -80px;" class="col col">
-                <button type="button" class=" btn btn-outline-dark" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
-            </div>
+            </div>            
         </div>
     </form>
 </div>
@@ -35,24 +32,24 @@
             <tbody>
                 @{
                     @try
-                     {
+                    {
 
 
                         @foreach (var item in (List<ModelGrupo>)ViewBag.ListaGrupo)
-                         {
-                <tr>
-                    <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
-                    <td style="padding: 0px 20px 0px 20px; color:blue">@item.GrupoNome</td>
+                        {
+                            <tr>
+                                <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
+                                <td style="padding: 0px 20px 0px 20px; color:blue">@item.GrupoNome</td>
 
-                    <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
-                    <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
-                </tr>
-                         }
-                     }
-                     catch
-                     {
+                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> </td>
+                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
+                            </tr>
+                        }
+                    }
+                    catch
+                    {
                         //
-                     }
+                    }
                 }
             </tbody>
         </table>
@@ -83,7 +80,11 @@
             </script>
         }
 
-        <br />
+        <hr />
+
+        <div>
+            <button type="button" class=" btn btn-outline-dark btn-sm" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
+        </div>
 
         <div style="margin-top: 20px">
             <hr />

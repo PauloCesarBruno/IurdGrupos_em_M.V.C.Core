@@ -5,14 +5,11 @@
 
     <form asp-controller="Membro" asp-action="Filtro">
         <div class="form-row">
-            <div class="col col-4">
+            <div class="col col-8">
                 <input asp-for="Nome" type="text" class="form-control" placeholder="Digite o nome do membro" />
             </div>
-            <div class="col col-2">
+            <div class="col col-4">
                 <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i> Buscar</button>
-            </div>
-            <div style="margin-left: -80px;" class="col col">
-                <button type="button" class=" btn btn-outline-dark" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
             </div>
         </div>
     </form>
@@ -25,11 +22,11 @@
         <table class="table-striped">
             <thead>
                 <tr>
-                    <td></td>
-                    <td></td>
                     <td style="padding: 0px 20px 0px 20px;">Id</td>
                     <td style="padding: 0px 20px 0px 20px;">Nome</td>
                     <td style="padding: 0px 20px 0px 20px;">Email</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </thead>
 
@@ -42,12 +39,12 @@
                         @foreach (var item in (List<ModelMembro>)ViewBag.ListaMembro)
                         {
                             <tr>
-                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> |</td>
-                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
-
                                 <td style="padding: 0px 20px 0px 20px; color:red">@item.Id</td>
                                 <td style="padding: 0px 20px 0px 20px;">@item.Nome</td>
                                 <td style="padding: 0px 20px 0px 20px; color:blue">@item.Nome</td>
+
+                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-warning btn-sm Editar" data-Id="@item.Id"><i class="fa fa-edit"></i> Editar</button> </td>
+                                <td style="padding: 2px;"><button type="button" class="btn btn-outline-danger btn-sm Excluir" data-Id="@item.Id"><i class="fa fa-eraser"></i> Excluir</button></td>
                             </tr>
                         }
                     }
@@ -85,7 +82,11 @@
             </script>
         }
 
-        <br />
+        <hr />
+
+        <div>
+            <button type="button" class=" btn btn-outline-dark btn-sm" onclick="Voltar()"> <i class="fa fa-step-backward"></i> Voltar</button>
+        </div>
 
         <div style="margin-top: 20px">
             <hr />
